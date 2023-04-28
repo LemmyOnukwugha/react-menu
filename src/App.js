@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react"
+
+import NavBar from "./components/NavBar"
+import Menu from "./components/Menu"
+import "./app.css"
 
 function App() {
+  const cart = []
+
+  const addToCart = (item) => {
+    console.log(item)
+    cart.push(item)
+    console.log(cart)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavBar cart={cart} />
+      <Menu addToCart={addToCart} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
