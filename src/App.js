@@ -7,14 +7,9 @@ import { useState } from "react"
 import { Button } from "react-bootstrap"
 
 function App() {
-  const [name, setName] = useState("iodsndosndomdk")
-  const InputRef = useRef()
+  const [name, setName] = useState("")
 
   const [cart, setCart] = useState([])
-
-  useEffect(() => {
-    console.log(InputRef.current)
-  }, [])
 
   const addToCart = (item) => {
     setCart([...cart, item])
@@ -26,7 +21,6 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setName(InputRef.current.value)
     console.log("submitting")
   }
 
@@ -34,7 +28,7 @@ function App() {
     <div>
       <h3>{name}</h3>
       <form onSubmit={handleSubmit}>
-        <input type="text" ref={InputRef} />
+        <input type="text" value={name} onChange={handleChange} />
         <button type="submit">Submit</button>
       </form>
       {/* <NavBar cart={cart} />
