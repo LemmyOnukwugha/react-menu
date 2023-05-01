@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 
 import NavBar from "./components/NavBar"
 import Menu from "./components/Menu"
@@ -8,9 +8,13 @@ import { Button } from "react-bootstrap"
 
 function App() {
   const [name, setName] = useState("iodsndosndomdk")
+  const InputRef = useRef()
 
   const [cart, setCart] = useState([])
-  console.log(cart)
+
+  useEffect(() => {
+    console.log(InputRef.current)
+  }, [])
 
   const addToCart = (item) => {
     setCart([...cart, item])
@@ -22,13 +26,15 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    setName(InputRef.current.value)
     console.log("submitting")
   }
 
   return (
     <div>
+      <h3>{name}</h3>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={name} onChange={handleChange} />
+        <input type="text" ref={InputRef} />
         <button type="submit">Submit</button>
       </form>
       {/* <NavBar cart={cart} />
