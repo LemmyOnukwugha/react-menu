@@ -1,24 +1,7 @@
 import React from "react"
-import { useState } from "react"
-import { Button, Col, Form, Row } from "react-bootstrap"
-import "./menuItem.css"
+import { Col, Form, Row, Button } from "react-bootstrap"
 
-const MenuItem = ({ addToCart, ...props }) => {
-  const [count, setCount] = useState(0)
-
-  const handleChange = (e) => {
-    setCount(e.target.value)
-  }
-  const handleAddTocart = (e) => {
-    e.preventDefault()
-    const CartItem = {
-      food: props.food,
-      description: props.description,
-      price: props.price,
-      count: count,
-    }
-    addToCart(CartItem)
-  }
+const CartItem = () => {
   return (
     <li>
       <Row>
@@ -45,4 +28,4 @@ const MenuItem = ({ addToCart, ...props }) => {
   )
 }
 
-export default MenuItem
+export default CartItem

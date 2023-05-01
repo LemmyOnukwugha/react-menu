@@ -1,8 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import { Badge, Button, Col, Container, Row } from "react-bootstrap"
 
 function NavBar(props) {
-  const [count, setCount] = useState(props.cart.length)
   return (
     <div className="bg-info py-3">
       <Container>
@@ -14,7 +13,7 @@ function NavBar(props) {
             <Button>
               Cart{" "}
               <Badge bg="light" text="dark">
-                {count}
+                {props.cart.length}
               </Badge>
             </Button>
           </Col>
