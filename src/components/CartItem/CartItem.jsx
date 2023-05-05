@@ -1,27 +1,24 @@
-import React from "react"
+import React, { useState } from "react"
 import { Col, Form, Row, Button } from "react-bootstrap"
 
-const CartItem = () => {
+const CartItem = (props) => {
+  const [count, setCount] = useState(0)
+  console.log(props)
+
+  const handleChange = (e) => {
+    setCount(e.target.value)
+  }
   return (
     <li>
-      <Row>
-        <Col lg={10} className="d-flex justify-content-center flex-column">
+      <Row style={{ borderBottom: "1px solid #ccc", paddingBlock: 10 }}>
+        <Col className="d-flex justify-content-center flex-column">
           <h5>{props.food}</h5>
           <p>{props.description}</p>
-          <p>${props.price}</p>
         </Col>
-        <Col>
-          <Form onSubmit={handleAddTocart}>
-            <Form.Group className="mb-2">
-              <Form.Label htmlFor="">Amount</Form.Label>
-              <Form.Control
-                type="number"
-                value={count}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Button type="submit">Add</Button>
-          </Form>
+        <Col className="d-flex flex-column align-items-end">
+          <h5>${props.price}</h5>
+          <p>count: {props.count}</p>
+          <Button variant="danger">remove</Button>
         </Col>
       </Row>
     </li>

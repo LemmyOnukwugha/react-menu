@@ -1,8 +1,8 @@
 import React from "react"
 import { Card, Container } from "react-bootstrap"
-import MenuItem from "./MenuItem"
+import MenuItem from "../MenuItem/MenuItem"
 
-function Menu({ addToCart }) {
+function Menu() {
   const foodItem = [
     {
       food: "Vegetables",
@@ -41,7 +41,6 @@ function Menu({ addToCart }) {
                 food={item.food}
                 description={item.description}
                 price={item.price}
-                addToCart={addToCart}
               />
             )
           })}

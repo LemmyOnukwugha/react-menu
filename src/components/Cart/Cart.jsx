@@ -3,6 +3,7 @@ import { Card, Container } from "react-bootstrap"
 import CartItem from "../CartItem/CartItem"
 
 const Cart = ({ cartItems }) => {
+  console.log(cartItems)
   return (
     <Container fluid="sm" style={{ maxWidth: 600, marginTop: 40 }}>
       <Card className="p-2">
@@ -14,7 +15,7 @@ const Cart = ({ cartItems }) => {
                 food={item.food}
                 description={item.description}
                 price={item.price}
-                addToCart={addToCart}
+                count={item.count}
               />
             )
           })}
@@ -25,8 +26,3 @@ const Cart = ({ cartItems }) => {
 }
 
 export default Cart
-
-
-
-
-

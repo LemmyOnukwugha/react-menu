@@ -1,23 +1,29 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useState } from "react"
 import { Button, Col, Form, Row } from "react-bootstrap"
 import "./menuItem.css"
+import { cartContext } from "../../App"
 
-const MenuItem = ({ addToCart, ...props }) => {
+const MenuItem = ({ ...props }) => {
   const [count, setCount] = useState(0)
+  const value = useContext(cartContext)
 
   const handleChange = (e) => {
     setCount(e.target.value)
   }
   const handleAddTocart = (e) => {
     e.preventDefault()
-    const CartItem = {
-      food: props.food,
-      description: props.description,
-      price: props.price,
-      count: count,
+    if (parseInt(count) === 0) {
+      alert("Please make item is more than zero")
+    } else {
+      const CartItem = {
+        food: props.food,
+        description: props.description,
+        price: props.price,
+        count: count,
+      }
+      value.setCart((prev) => [...prev, CartItem])
     }
-    addToCart(CartItem)
   }
   return (
     <li>
